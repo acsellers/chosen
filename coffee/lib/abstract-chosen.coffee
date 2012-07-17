@@ -8,7 +8,7 @@ class AbstractChosen
 
   constructor: (@form_field, @options={}) ->
     this.set_default_values()
-    
+
     @is_multiple = @form_field.multiple
     this.set_default_text()
 
@@ -33,6 +33,8 @@ class AbstractChosen
     @choices = 0
     @single_backstroke_delete = @options.single_backstroke_delete || false
     @max_selected_options = @options.max_selected_options || Infinity
+    @extra_classes = @options.html_class || false
+    @dont_calculate_width = @options.manual_width || true
 
   set_default_text: ->
     if @form_field.getAttribute("data-placeholder")

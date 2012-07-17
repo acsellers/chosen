@@ -33,14 +33,14 @@ class Chosen extends AbstractChosen
 
     container_div = ($ "<div />", {
       id: @container_id
-      class: "chzn-container#{ if @is_rtl then ' chzn-rtl' else '' }"
-      style: 'width: ' + (@f_width) + 'px;' #use parens around @f_width so coffeescript doesn't think + ' px' is a function parameter
+      class: "chzn-container#{ if @is_rtl then ' chzn-rtl' else '' }#{if @extra_classes then " #{@extra_classes}" else ''}"
+      style: "#{ if @dont_calculate_width then '' else 'width: ' + (@f_width) + 'px;'}" #use parens around @f_width so coffeescript doesn't think + ' px' is a function parameter
     })
 
     if @is_multiple
-      container_div.html '<ul class="chzn-choices"><li class="search-field"><input type="text" value="' + @default_text + '" class="default" autocomplete="off" style="width:25px;" /></li></ul><div class="chzn-drop" style="left:-9000px;"><ul class="chzn-results"></ul></div>'
+      container_div.html '<ul class="chzn-choices"><li class="search-field"><input type="text" value="' + @default_text + '" class="default" autocomplete="off" style="width:25px;" /></li></ul><div class="chzn-drop' + "#{if @extra_classes then " #{@extra_classes}" else ''}" + '" style="left:-9000px;"><ul class="chzn-results"></ul></div>'
     else
-      container_div.html '<a href="javascript:void(0)" class="chzn-single chzn-default"><span>' + @default_text + '</span><div><b></b></div></a><div class="chzn-drop" style="left:-9000px;"><div class="chzn-search"><input type="text" autocomplete="off" /></div><ul class="chzn-results"></ul></div>'
+      container_div.html '<a href="javascript:void(0)" class="chzn-single chzn-default"><span>' + @default_text + '</span><div><b></b></div></a><div class="chzn-drop' + "#{if @extra_classes then " #{@extra_classes}" else ''}" + '" style="left:-9000px;"><div class="chzn-search"><input type="text" autocomplete="off" /></div><ul class="chzn-results"></ul></div>'
 
     @form_field_jq.hide().after container_div
     @container = ($ '#' + @container_id)
@@ -50,7 +50,10 @@ class Chosen extends AbstractChosen
     dd_top = @container.height()
     dd_width = (@f_width - get_side_border_padding(@dropdown))
 
-    @dropdown.css({"width": dd_width  + "px", "top": dd_top + "px"})
+    if @dont_calculate_width
+      @dropdown.css({"top": dd_top + "px"})
+    else
+      @dropdown.css({"width": dd_width  + "px", "top": dd_top + "px"})
 
     @search_field = @container.find('input').first()
     @search_results = @container.find('ul.chzn-results').first()
