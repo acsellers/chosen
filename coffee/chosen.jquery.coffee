@@ -38,7 +38,7 @@ class Chosen extends AbstractChosen
     })
 
     if @is_multiple
-      container_div.html '<ul class="chzn-choices"><li class="search-field"><input type="text" value="' + @default_text + '" class="default" autocomplete="off" style="width:25px;" /></li></ul><div class="chzn-drop' + "#{if @extra_classes then " #{@extra_classes}" else ''}" + '" style="left:-9000px;"><ul class="chzn-results"></ul></div>'
+      container_div.html '<ul class="chzn-choices"><li class="search-field"><input type="text" value="' + @default_text + '" class="default" autocomplete="off"  /></li></ul><div class="chzn-drop' + "#{if @extra_classes then " #{@extra_classes}" else ''}" + '" style="left:-9000px;"><ul class="chzn-results"></ul></div>'
     else
       container_div.html '<a href="javascript:void(0)" class="chzn-single chzn-default"><span>' + @default_text + '</span><div><b></b></div></a><div class="chzn-drop' + "#{if @extra_classes then " #{@extra_classes}" else ''}" + '" style="left:-9000px;"><div class="chzn-search"><input type="text" autocomplete="off" /></div><ul class="chzn-results"></ul></div>'
 
@@ -67,8 +67,11 @@ class Chosen extends AbstractChosen
     else
       @search_container = @container.find('div.chzn-search').first()
       @selected_item = @container.find('.chzn-single').first()
-      sf_width = dd_width - get_side_border_padding(@search_container) - get_side_border_padding(@search_field)
-      @search_field.css( {"width" : sf_width + "px"} )
+      if @dont_calculate_width
+        @search_field.addClass(@extra_classes)
+      else
+        sf_width = dd_width - get_side_border_padding(@search_container) - get_side_border_padding(@search_field)
+        @search_field.css( {"width" : sf_width + "px"} )
 
     this.results_build()
     this.set_tab_index()
