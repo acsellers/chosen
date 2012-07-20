@@ -33,7 +33,7 @@ class Chosen extends AbstractChosen
 
     container_div = ($ "<div />", {
       id: @container_id
-      class: "chzn-container#{ if @is_rtl then ' chzn-rtl' else '' }#{if @extra_classes then " #{@extra_classes}" else ''}"
+      class: "chzn-container#{ if @is_rtl then ' chzn-rtl' else '' }#{if @extra_classes then " #{@extra_classes}" else ''}#{ if @reversed then ' chzn-reverse' else ''}#{if @reversed then ' chzn-reverse' else ''}"
       style: "#{ if @dont_calculate_width then '' else 'width: ' + (@f_width) + 'px;'}" #use parens around @f_width so coffeescript doesn't think + ' px' is a function parameter
     })
 

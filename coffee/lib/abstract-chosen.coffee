@@ -35,6 +35,7 @@ class AbstractChosen
     @max_selected_options = @options.max_selected_options || Infinity
     @extra_classes = @options.html_class || false
     @dont_calculate_width = @options.manual_width || false
+    @reversed = @options.reverse_open || false
 
   set_default_text: ->
     if @form_field.getAttribute("data-placeholder")
