@@ -38,9 +38,9 @@ class Chosen extends AbstractChosen
     })
 
     if @is_multiple
-      container_div.html '<ul class="chzn-choices"><li class="search-field"><input type="text" value="' + @default_text + '" class="default" autocomplete="off" style="width:25px;" /></li></ul><div class="chzn-drop' + "#{if @extra_classes then " #{@extra_classes}" else ''}" + '" style="left:-9000px;"><ul class="chzn-results"></ul></div>'
+      container_div.html '<ul class="chzn-choices"><li class="search-field"><input type="text" value="' + @default_text + '" class="default" autocomplete="off" style="width:25px;" /></li></ul><div class="chzn-drop" style="left:-9000px;"><ul class="chzn-results"></ul></div>'
     else
-      container_div.html '<a href="javascript:void(0)" class="chzn-single chzn-default"><span>' + @default_text + '</span><div><b></b></div></a><div class="chzn-drop' + "#{if @extra_classes then " #{@extra_classes}" else ''}" + '" style="left:-9000px;"><div class="chzn-search"><input type="text" autocomplete="off" /></div><ul class="chzn-results"></ul></div>'
+      container_div.html '<a href="javascript:void(0)" class="chzn-single chzn-default"><span>' + @default_text + '</span><div><b></b></div></a><div class="chzn-drop" style="left:-9000px;"><div class="chzn-search"><input type="text" autocomplete="off" /></div><ul class="chzn-results"></ul></div>'
 
     @form_field_jq.hide().after container_div
     @container = ($ '#' + @container_id)
@@ -51,7 +51,7 @@ class Chosen extends AbstractChosen
     dd_width = (@f_width - get_side_border_padding(@dropdown))
 
     if @dont_calculate_width
-      @dropdown.css({"top": dd_top + "px"})
+      @dropdown.css({"width": "99.5%","top": dd_top + "px"})
     else
       @dropdown.css({"width": dd_width  + "px", "top": dd_top + "px"})
 

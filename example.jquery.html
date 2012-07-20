@@ -40,6 +40,9 @@
       overflow: hidden;
       visibility: hidden;
     }
+    .span2 {
+      width: 360px;
+    }
     
     footer {
       margin-top: 2em;
@@ -1203,6 +1206,43 @@
       </div>
     </div>
 
+    <h2>Setting Size by CSS</h2>
+    <div class="side-by-side clearfix">
+      <p>Chosen will try to guess the best size for the box automatically, but sometimes it doesn't function. Set manual_width to true and html_class to the width correcting class to activate.
+      <code>$("#manual_width").chosen({html_class:"span2",manual_width:true})</code>
+ </p>
+      <div>
+        <em>Plain Select</em>
+        <select data-placeholder="Your Favorite Type of Bear" style="width:350px;" class="chzn-select" tabindex="7">
+          <option value=""></option>
+          <option>American Black Bear</option>
+          <option>Asiatic Black Bear</option>
+          <option>Brown Bear</option>
+          <option>Giant Panda</option>
+          <option selected>Sloth Bear</option>
+          <option disabled>Sun Bear</option>
+          <option>Polar Bear</option>
+          <option disabled>Spectacled Bear</option>
+        </select>
+      </div>
+      <div>
+        <em>Select with Width class</em>
+        <select data-placeholder="Your Favorite Type of Bear" tabindex="7" id ="manual_width">
+          <option value=""></option>
+          <option>American Black Bear</option>
+          <option>Asiatic Black Bear</option>
+          <option>Brown Bear</option>
+          <option>Giant Panda</option>
+          <option selected>Sloth Bear</option>
+          <option disabled>Sun Bear</option>
+          <option>Polar Bear</option>
+          <option disabled>Spectacled Bear</option>
+        </select>
+      </div>
+
+    </div>
+
+
     <h2>Default Text Support</h2>
     <div class="side-by-side clearfix">
       <p>Chosen automatically sets the default field text ("Choose a country...") by reading the select element's data-placeholder value. If no data-placeholder value is present, it will default to "Select Some Option" or "Select Some Options" depending on whether the select is single or multiple. You can change these elements in the plugin js file as you see fit.</p>
@@ -1309,6 +1349,9 @@
   </div>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js" type="text/javascript"></script>
   <script src="chosen/chosen.jquery.js" type="text/javascript"></script>
-  <script type="text/javascript"> $(".chzn-select").chosen(); $(".chzn-select-deselect").chosen({allow_single_deselect:true}); </script>
+  <script type="text/javascript"> 
+    $(".chzn-select").chosen(); $(".chzn-select-deselect").chosen({allow_single_deselect:true}); 
+    $("#manual_width").chosen({html_class:"span2",manual_width:true})
+  </script>
   </form>
 </body>

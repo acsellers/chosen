@@ -138,7 +138,7 @@ Copyright (c) 2011 by Harvest
       this.single_backstroke_delete = this.options.single_backstroke_delete || false;
       this.max_selected_options = this.options.max_selected_options || Infinity;
       this.extra_classes = this.options.html_class || false;
-      return this.dont_calculate_width = this.options.manual_width || true;
+      return this.dont_calculate_width = this.options.manual_width || false;
     };
 
     AbstractChosen.prototype.set_default_text = function() {
@@ -342,9 +342,9 @@ Copyright (c) 2011 by Harvest
         style: "" + (this.dont_calculate_width ? '' : 'width: ' + this.f_width + 'px;')
       });
       if (this.is_multiple) {
-        container_div.html('<ul class="chzn-choices"><li class="search-field"><input type="text" value="' + this.default_text + '" class="default" autocomplete="off" style="width:25px;" /></li></ul><div class="chzn-drop' + ("" + (this.extra_classes ? " " + this.extra_classes : '')) + '" style="left:-9000px;"><ul class="chzn-results"></ul></div>');
+        container_div.html('<ul class="chzn-choices"><li class="search-field"><input type="text" value="' + this.default_text + '" class="default" autocomplete="off" style="width:25px;" /></li></ul><div class="chzn-drop" style="left:-9000px;"><ul class="chzn-results"></ul></div>');
       } else {
-        container_div.html('<a href="javascript:void(0)" class="chzn-single chzn-default"><span>' + this.default_text + '</span><div><b></b></div></a><div class="chzn-drop' + ("" + (this.extra_classes ? " " + this.extra_classes : '')) + '" style="left:-9000px;"><div class="chzn-search"><input type="text" autocomplete="off" /></div><ul class="chzn-results"></ul></div>');
+        container_div.html('<a href="javascript:void(0)" class="chzn-single chzn-default"><span>' + this.default_text + '</span><div><b></b></div></a><div class="chzn-drop" style="left:-9000px;"><div class="chzn-search"><input type="text" autocomplete="off" /></div><ul class="chzn-results"></ul></div>');
       }
       this.form_field_jq.hide().after(container_div);
       this.container = $('#' + this.container_id);
@@ -354,6 +354,7 @@ Copyright (c) 2011 by Harvest
       dd_width = this.f_width - get_side_border_padding(this.dropdown);
       if (this.dont_calculate_width) {
         this.dropdown.css({
+          "width": "99.5%",
           "top": dd_top + "px"
         });
       } else {
