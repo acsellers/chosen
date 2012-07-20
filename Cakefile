@@ -10,7 +10,7 @@ CoffeeScript     = require 'coffee-script'
 {parser, uglify} = require 'uglify-js'
 
 javascripts = {
-  'chosen/chosen.jquery.js': [
+  'chosen/jquery.chosen.js': [
     'coffee/lib/select-parser.coffee'
     'coffee/lib/abstract-chosen.coffee'
     'coffee/chosen.jquery.coffee'
