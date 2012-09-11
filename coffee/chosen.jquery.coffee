@@ -368,7 +368,7 @@ class Chosen extends AbstractChosen
 
       @search_field.val ""
 
-      @form_field_jq.trigger "change", {'selected': @form_field.options[item.options_index].value} if @is_multiple || @form_field_jq.val() != @current_value
+      @form_field_jq.trigger "change", {'selected': @form_field.options[item.options_index].value} if @is_multiple
       @current_value = @form_field_jq.val()
       this.search_field_scale()
 
