@@ -111,6 +111,8 @@ class Chosen extends AbstractChosen
   container_mousedown: (evt) ->
     if !@is_disabled
       target_closelink =  if evt? then ($ evt.target).hasClass "search-choice-close" else false
+      if target_closelink
+        @current_value = null
       if evt and evt.type is "mousedown" and not @results_showing
         evt.stopPropagation()
       if not @pending_destroy_click and not target_closelink
