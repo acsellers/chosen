@@ -77,6 +77,7 @@ class AbstractChosen
     this.results_reset_cleanup() if not @is_multiple
     this.result_clear_highlight()
     @result_single_selected = null
+    @current_value = null
     this.results_build()
 
   results_toggle: ->

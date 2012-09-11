@@ -207,6 +207,7 @@ Copyright (c) 2011 by Harvest
       }
       this.result_clear_highlight();
       this.result_single_selected = null;
+      this.current_value = null;
       return this.results_build();
     };
 
