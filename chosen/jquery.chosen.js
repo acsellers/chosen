@@ -779,7 +779,7 @@ Copyright (c) 2011 by Harvest
           this.results_hide();
         }
         this.search_field.val("");
-        if (this.is_multiple || this.form_field_jq.val() !== this.current_value) {
+        if (this.is_multiple) {
           this.form_field_jq.trigger("change", {
             'selected': this.form_field.options[item.options_index].value
           });
